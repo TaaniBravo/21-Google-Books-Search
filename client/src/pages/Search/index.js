@@ -2,7 +2,7 @@ import React from "react";
 import { Container } from "react-bootstrap";
 import Hero from "../../components/Hero";
 import { List, ListItem } from "../../components/List";
-import CustomCard from "../../components/CustomCard";
+import SearchCard from "../../components/CustomCards/SearchCard";
 import SearchForm from "../../components/SearchForm";
 
 const Search = () => {
@@ -18,7 +18,7 @@ const Search = () => {
         <h2>Results </h2>
         <List>
           <ListItem>
-            <CustomCard></CustomCard>
+            <SearchCard></SearchCard>
           </ListItem>
         </List>
       </Container>
