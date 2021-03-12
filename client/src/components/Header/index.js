@@ -6,7 +6,7 @@ const Header = () => {
     <div>
       <Navbar bg="light" expand="lg">
         <Navbar.Brand href="/">
-          <i class="fab fa-react"></i> Google Books
+          <i className="fab fa-react"></i> Google Books
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">

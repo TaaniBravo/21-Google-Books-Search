@@ -30,7 +30,7 @@ const Saved = () => {
   return (
     <main>
       <Hero />
-      <Container>
+      <Container fluid>
         <h2>Saved Books</h2>
         {/* {state.books.length ? (
           state.books.map(book => (

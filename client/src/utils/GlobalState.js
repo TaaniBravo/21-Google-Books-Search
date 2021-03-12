@@ -5,7 +5,7 @@ const BookContext = createContext();
 const { Provider } = BookContext;
 
 const reducer = (state, action) => {
-  console.log(action.books);
+  console.log(action);
   switch (action.type) {
     case UPDATE_BOOKS:
       return {

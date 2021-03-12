@@ -2,23 +2,27 @@ import React from "react";
 import { Card, Button } from "react-bootstrap";
 import "./style.scss";
 
-const CustomCard = () => {
+const CustomCard = props => {
+  console.log(props);
   return (
     <div>
       <Card style={{ width: "100%" }}>
         <Card.Body>
-          <Card.Title>Card Title</Card.Title>
+          <Card.Title>{props.volumeInfo.title}</Card.Title>
           <Card.Subtitle className="mb-2 text-muted">
-            Card Subtitle
+            {props.volumeInfo.authors.join(", ")}
           </Card.Subtitle>
-          <Card.Img variant="top" src="" />
-          <Card.Text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </Card.Text>
-          <Button variant="primary" className="viewBtn">
-            View
-          </Button>
+          {/* <Card.Img variant="top" src={props.volumeInfo.imageLinks.thumbnail} /> */}
+          <Card.Text>{props.searchInfo?.textSnippet}</Card.Text>
+          <a
+            href={props.volumeInfo.previewLink}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Button variant="primary" className="viewBtn">
+              View
+            </Button>
+          </a>
           <Button variant="success">Save</Button>
         </Card.Body>
       </Card>
