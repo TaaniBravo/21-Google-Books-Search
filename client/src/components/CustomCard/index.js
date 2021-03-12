@@ -1,5 +1,6 @@
 import React from "react";
-import { Card } from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
+import "./style.scss";
 
 const CustomCard = () => {
   return (
@@ -15,6 +16,10 @@ const CustomCard = () => {
             Some quick example text to build on the card title and make up the
             bulk of the card's content.
           </Card.Text>
+          <Button variant="primary" className="viewBtn">
+            View
+          </Button>
+          <Button variant="danger">Delete</Button>
         </Card.Body>
       </Card>
     </div>
