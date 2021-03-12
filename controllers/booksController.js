@@ -4,7 +4,7 @@ const db = require("../models");
 module.exports = {
   findAll: async (req, res) => {
     try {
-      const dbModel = await db.Book.find(req.query).sort({ date: -1 });
+      const dbModel = await db.Book.find(req.query);
       res.json(dbModel);
     } catch (err) {
       res.status(422).json(err);

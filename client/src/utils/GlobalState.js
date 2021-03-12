@@ -1,11 +1,17 @@
 import React, { createContext, useReducer, useContext } from "react";
-import { SAVE_BOOK, REMOVE_BOOK } from "./actions";
+import { SAVE_BOOK, REMOVE_BOOK, UPDATE_BOOKS } from "./actions";
 
 const BookContext = createContext();
 const { Provider } = BookContext;
 
 const reducer = (state, action) => {
+  console.log(action.books);
   switch (action.type) {
+    case UPDATE_BOOKS:
+      return {
+        ...state,
+        savedBooks: action.books
+      };
     case SAVE_BOOK:
       return {
         ...state,
