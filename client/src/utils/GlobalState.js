@@ -1,8 +1,8 @@
 import React, { createContext, useReducer, useContext } from "react";
 import { SAVE_BOOK, REMOVE_BOOK } from "./actions";
 
-const bookContext = createContext();
-const { Provider } = bookContext;
+const BookContext = createContext();
+const { Provider } = BookContext;
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -19,25 +19,18 @@ const reducer = (state, action) => {
         })
       };
     default:
-      break;
+      return state;
   }
 };
 
-const bookProvider = ({ value = [], ...props }) => {
+const BookProvider = ({ value = [], ...props }) => {
   const [state, dispatch] = useReducer(reducer, {
-    savedBooks: [
-      {
-        title: "",
-        authors: [],
-        description: "",
-        image: ""
-      }
-    ]
+    savedBooks: []
   });
 
   return <Provider value={[state, dispatch]} {...props} />;
 };
 
-const useBookContext = () => useContext(bookContext);
+const useBookContext = () => useContext(BookContext);
 
-export { bookProvider, useBookContext };
+export { BookProvider, useBookContext };
