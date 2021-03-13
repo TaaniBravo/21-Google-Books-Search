@@ -8,8 +8,8 @@ import { BookProvider } from "./utils/GlobalState";
 function App() {
   return (
     <div className="App">
-      <BookProvider>
-        <Router>
+      <Router>
+        <BookProvider>
           <Header />
           <Switch>
             <Route exact path={["/", "/saved"]}>
@@ -19,8 +19,8 @@ function App() {
               <Search />
             </Route>
           </Switch>
-        </Router>
-      </BookProvider>
+        </BookProvider>
+      </Router>
     </div>
   );
 }
