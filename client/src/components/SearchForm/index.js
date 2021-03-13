@@ -8,7 +8,7 @@ const SearchForm = props => {
         <Form.Label>Search:</Form.Label>
         <Form.Control
           type="text"
-          placeholder="Title, Character, Author"
+          placeholder="Book Title..."
           ref={props.input}
           onChange={props.handleInputChange}
         />

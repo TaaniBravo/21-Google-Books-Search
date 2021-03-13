@@ -4,12 +4,19 @@ import Hero from "../../components/Hero";
 import { List, ListItem } from "../../components/List";
 import SavedCard from "../../components/CustomCards/SavedCard";
 import { useBookContext } from "../../utils/GlobalState";
-import { UPDATE_BOOKS, REMOVE_BOOK } from "../../utils/actions";
+import {
+  UPDATE_BOOKS,
+  REMOVE_BOOK,
+  LOADING,
+  SET_BOOKS
+} from "../../utils/actions";
+import API from "../../utils/API";
 
 const Saved = () => {
   const [state, dispatch] = useBookContext();
 
   const getBooks = () => {
+    dispatch({ type: LOADING });
     dispatch({ type: UPDATE_BOOKS });
   };
 
@@ -18,14 +25,14 @@ const Saved = () => {
   };
 
   useEffect(() => {
-    const getData = async () => {
-      await getBooks();
-    };
-
-    getData();
+    API.getBooks().then(books => {
+      dispatch({
+        type: SET_BOOKS,
+        savedBooks: books
+      });
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  console.log(state);
 
   return (
     <main>
