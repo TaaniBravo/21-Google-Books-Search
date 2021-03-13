@@ -10,7 +10,7 @@ const CustomCard = props => {
         <Card.Body>
           <Card.Title>{props.volumeInfo.title}</Card.Title>
           <Card.Subtitle className="mb-2 text-muted">
-            {props.volumeInfo.authors.join(", ")}
+            {props.volumeInfo.authors?.join(", ")}
           </Card.Subtitle>
           {/* <Card.Img variant="top" src={props.volumeInfo.imageLinks.thumbnail} /> */}
           <Card.Text>{props.searchInfo?.textSnippet}</Card.Text>

@@ -1,28 +1,33 @@
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 import { Container } from "react-bootstrap";
 import Hero from "../../components/Hero";
 import { List, ListItem } from "../../components/List";
 import SearchCard from "../../components/CustomCards/SearchCard";
 import SearchForm from "../../components/SearchForm";
 import API from "../../utils/API";
+import { useBookContext } from "../../utils/GlobalState";
+import { LOADING, SET_SEARCH_INPUT, UPDATE_SEARCH } from "../../utils/actions";
 
 const Search = () => {
+  const [state, dispatch] = useBookContext();
   const input = useRef();
 
-  const [searchInput, setSearchInput] = useState("");
-  const [results, setResults] = useState({});
-
   const handleInputChange = e => {
-    setSearchInput(input.current.value);
+    dispatch({ type: SET_SEARCH_INPUT, input: input.current.value });
   };
 
   const handleSubmit = e => {
     e.preventDefault();
 
-    API.searchBooks(searchInput).then(({ data }) => {
-      setResults(data);
-      console.log(results);
-    });
+    dispatch({ type: LOADING });
+    API.searchBooks(state.searchInput)
+      .then(({ data }) => {
+        dispatch({ type: LOADING });
+        dispatch({ type: UPDATE_SEARCH, books: data.items });
+      })
+      .then(() => {
+        console.log(state.searchResults);
+      });
   };
 
   return (
@@ -40,8 +45,8 @@ const Search = () => {
       <Container>
         <h2>Search Results</h2>
         <List>
-          {results.items?.length ? (
-            results.items.map(book => (
+          {state.searchResults.length ? (
+            state.searchResults.map(book => (
               <ListItem key={book.id}>
                 <SearchCard {...book}></SearchCard>
               </ListItem>

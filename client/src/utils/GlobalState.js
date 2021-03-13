@@ -4,7 +4,9 @@ import {
   SAVE_BOOK,
   REMOVE_BOOK,
   UPDATE_BOOKS,
-  LOADING
+  LOADING,
+  SET_SEARCH_INPUT,
+  UPDATE_SEARCH
 } from "./actions";
 
 const BookContext = createContext();
@@ -40,6 +42,19 @@ const reducer = (state, action) => {
         ],
         loading: false
       };
+    case SET_SEARCH_INPUT:
+      return {
+        ...state,
+        searchInput: action.input,
+        loading: false
+      };
+    case UPDATE_SEARCH:
+      console.log(action.books);
+      return {
+        ...state,
+        searchResults: [...action.books],
+        loading: false
+      };
     case LOADING:
       return {
         ...state,
@@ -52,6 +67,8 @@ const reducer = (state, action) => {
 
 const BookProvider = ({ value = [], ...props }) => {
   const [state, dispatch] = useReducer(reducer, {
+    searchResults: [],
+    searchInput: "",
     savedBooks: [],
     loading: false
   });
