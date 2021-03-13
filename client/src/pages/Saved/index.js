@@ -25,10 +25,12 @@ const Saved = () => {
   };
 
   useEffect(() => {
-    API.getBooks().then(books => {
+    dispatch({ type: LOADING });
+    API.getBooks().then(res => {
+      console.log(res);
       dispatch({
         type: SET_BOOKS,
-        savedBooks: books
+        savedBooks: res.data
       });
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
