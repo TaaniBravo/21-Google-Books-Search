@@ -2,7 +2,7 @@ import React from "react";
 import { Card, Button, Row, Col } from "react-bootstrap";
 import "./style.scss";
 
-const CustomCard = props => {
+const SavedCard = props => {
   return (
     <div>
       <Card style={{ width: "100%" }}>
@@ -19,22 +19,24 @@ const CustomCard = props => {
               <Card.Text>{props.description}</Card.Text>
             </Col>
           </Row>
-          <Button variant="primary" className="viewBtn">
-            View
-          </Button>
-          <Button
-            variant="danger"
-            onClick={() => {
-              console.log(props._id);
-              props.removeBook(props._id);
-            }}
-          >
-            Delete
-          </Button>
+          <div className="buttons-group">
+            <Button variant="primary" className="viewBtn">
+              View
+            </Button>
+            <Button
+              variant="danger"
+              onClick={() => {
+                console.log(props._id);
+                props.removeBook(props._id);
+              }}
+            >
+              Delete
+            </Button>
+          </div>
         </Card.Body>
       </Card>
     </div>
   );
 };
 
-export default CustomCard;
+export default SavedCard;

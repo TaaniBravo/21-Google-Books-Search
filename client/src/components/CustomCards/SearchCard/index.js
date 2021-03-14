@@ -22,31 +22,32 @@ const CustomCard = props => {
               <Card.Text>{props.searchInfo?.textSnippet}</Card.Text>
             </Col>
           </Row>
-          <a
-            href={props.volumeInfo.previewLink}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <Button variant="primary" className="viewBtn">
-              View
+          <div className="buttons-group">
+            <a
+              href={props.volumeInfo.previewLink}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <Button variant="primary" className="viewBtn">
+                View
+              </Button>
+            </a>
+            <Button
+              variant="success"
+              onClick={() => {
+                const bookData = {
+                  authors: props.volumeInfo.authors,
+                  title: props.volumeInfo.title,
+                  description: props.searchInfo?.textSnippet,
+                  image: props.volumeInfo.imageLinks.thumbnail,
+                  link: props.volumeInfo.previewLink
+                };
+                props.saveBook(bookData);
+              }}
+            >
+              Save
             </Button>
-          </a>
-          <Button
-            variant="success"
-            onClick={() => {
-              const bookData = {
-                authors: props.volumeInfo.authors,
-                title: props.volumeInfo.title,
-                description: props.searchInfo?.textSnippet,
-                image: props.volumeInfo.imageLinks.thumbnail,
-                link: props.volumeInfo.previewLink
-              };
-
-              props.saveBook(bookData);
-            }}
-          >
-            Save
-          </Button>
+          </div>
         </Card.Body>
       </Card>
     </div>
