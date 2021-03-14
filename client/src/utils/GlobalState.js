@@ -1,6 +1,5 @@
 import React, { createContext, useReducer, useContext } from "react";
 import {
-  SET_BOOKS,
   SAVE_BOOK,
   REMOVE_BOOK,
   UPDATE_BOOKS,
@@ -14,16 +13,10 @@ const { Provider } = BookContext;
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case SET_BOOKS:
-      return {
-        ...state,
-        savedBooks: [action.savedBooks],
-        loading: false
-      };
     case UPDATE_BOOKS:
       return {
         ...state,
-        savedBooks: [action.savedBooks],
+        savedBooks: [...action.savedBooks],
         loading: false
       };
     case SAVE_BOOK:

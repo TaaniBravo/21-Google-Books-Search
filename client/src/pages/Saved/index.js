@@ -4,20 +4,19 @@ import Hero from "../../components/Hero";
 import { List, ListItem } from "../../components/List";
 import SavedCard from "../../components/CustomCards/SavedCard";
 import { useBookContext } from "../../utils/GlobalState";
-import {
-  UPDATE_BOOKS,
-  REMOVE_BOOK,
-  LOADING,
-  SET_BOOKS
-} from "../../utils/actions";
+import { UPDATE_BOOKS, REMOVE_BOOK, LOADING } from "../../utils/actions";
 import API from "../../utils/API";
 
 const Saved = () => {
   const [state, dispatch] = useBookContext();
 
-  const getBooks = () => {
+  const getBooks = async () => {
     dispatch({ type: LOADING });
-    dispatch({ type: UPDATE_BOOKS });
+    const res = await API.getBooks();
+    dispatch({
+      type: UPDATE_BOOKS,
+      savedBooks: res.data
+    });
   };
 
   const removeBook = id => {
@@ -25,14 +24,7 @@ const Saved = () => {
   };
 
   useEffect(() => {
-    dispatch({ type: LOADING });
-    API.getBooks().then(res => {
-      console.log(res);
-      dispatch({
-        type: SET_BOOKS,
-        savedBooks: res.data
-      });
-    });
+    getBooks();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -41,17 +33,17 @@ const Saved = () => {
       <Hero />
       <Container fluid>
         <h2>Saved Books</h2>
-        {/* {state.books.length ? (
-          state.books.map(book => (
-            <List>
-              <ListItem>
-                <SavedCard removeBook={removeBook}></SavedCard>
+        {state.savedBooks?.length ? (
+          <List>
+            {state.savedBooks.map(book => (
+              <ListItem key={book.id}>
+                <SavedCard removeBook={removeBook} {...book}></SavedCard>
               </ListItem>
-            </List>
-          ))
+            ))}
+          </List>
         ) : (
           <h3>🤔 You haven't saved any books yet! 🤔</h3>
-        )} */}
+        )}
       </Container>
     </main>
   );

@@ -7,6 +7,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googlebooks");
 
 const bookSeed = [
   {
+    id: 1,
     title: "The Dead Zone",
     authors: ["Stephen King"],
     description:
@@ -17,6 +18,7 @@ const bookSeed = [
       "http://books.google.com/books?id=sazytgAACAAJ&dq=title:The+Hunger+Games&hl=&source=gbs_api"
   },
   {
+    id: 2,
     title: "Lord of the Flies",
     authors: ["William Golding"],
     description:
@@ -27,6 +29,7 @@ const bookSeed = [
       "http://books.google.com/books?id=sazytgAACAAJ&dq=title:The+Hunger+Games&hl=&source=gbs_api"
   },
   {
+    id: 3,
     title: "The Catcher in the Rye",
     authors: ["J.D. Salinger"],
     description:
@@ -37,6 +40,7 @@ const bookSeed = [
       "http://books.google.com/books?id=sazytgAACAAJ&dq=title:The+Hunger+Games&hl=&source=gbs_api"
   },
   {
+    id: 4,
     title: "The Punch Escrow",
     authors: ["Tal M. Klein"],
     description:
@@ -47,6 +51,7 @@ const bookSeed = [
       "http://books.google.com/books?id=sazytgAACAAJ&dq=title:The+Hunger+Games&hl=&source=gbs_api"
   },
   {
+    id: 5,
     title: "Harry Potter and the Sorcerer's Stone",
     authors: ["J.K. Rowling"],
     description:
@@ -57,6 +62,7 @@ const bookSeed = [
       "http://books.google.com/books?id=sazytgAACAAJ&dq=title:The+Hunger+Games&hl=&source=gbs_api"
   },
   {
+    id: 6,
     title: "Coraline",
     authors: ["Neil Gaiman"],
     description:
@@ -67,6 +73,7 @@ const bookSeed = [
       "http://books.google.com/books?id=sazytgAACAAJ&dq=title:The+Hunger+Games&hl=&source=gbs_api"
   },
   {
+    id: 7,
     title: "Code: The Hidden Language of Computer Hardware and Software",
     authors: ["Charles Petzold"],
     description:
@@ -77,6 +84,7 @@ const bookSeed = [
       "http://books.google.com/books?id=sazytgAACAAJ&dq=title:The+Hunger+Games&hl=&source=gbs_api"
   },
   {
+    id: 8,
     title: "The Everything Store: Jeff Bezos and the Age of Amazon",
     authors: ["Brad Stone"],
     description:
@@ -87,6 +95,7 @@ const bookSeed = [
       "http://books.google.com/books?id=sazytgAACAAJ&dq=title:The+Hunger+Games&hl=&source=gbs_api"
   },
   {
+    id: 9,
     title: "Total Recall: My Unbelievably True Life Story",
     authors: ["Arnold Schwarzenegger"],
     description:
@@ -97,6 +106,7 @@ const bookSeed = [
       "http://books.google.com/books?id=sazytgAACAAJ&dq=title:The+Hunger+Games&hl=&source=gbs_api"
   },
   {
+    id: 10,
     title: "Elon Musk: Tesla, SpaceX, and the Quest for a Fantastic Future",
     authors: ["Ashlee Vance"],
     description:
@@ -107,6 +117,7 @@ const bookSeed = [
       "http://books.google.com/books?id=sazytgAACAAJ&dq=title:The+Hunger+Games&hl=&source=gbs_api"
   },
   {
+    id: 11,
     title: "Steve Jobs",
     authors: ["Walter Isaacson"],
     description:
@@ -117,6 +128,7 @@ const bookSeed = [
       "http://books.google.com/books?id=sazytgAACAAJ&dq=title:The+Hunger+Games&hl=&source=gbs_api"
   },
   {
+    id: 12,
     title: "Astrophysics for People in a Hurry",
     authors: ["Neil deGrasse Tyson"],
     description:
@@ -127,6 +139,7 @@ const bookSeed = [
       "http://books.google.com/books?id=sazytgAACAAJ&dq=title:The+Hunger+Games&hl=&source=gbs_api"
   },
   {
+    id: 13,
     title: "1984",
     authors: ["George Orwell"],
     description:
@@ -137,6 +150,7 @@ const bookSeed = [
       "http://books.google.com/books?id=sazytgAACAAJ&dq=title:The+Hunger+Games&hl=&source=gbs_api"
   },
   {
+    id: 14,
     title: "Frankenstein",
     authors: ["Mary Shelley"],
     description:
@@ -147,6 +161,7 @@ const bookSeed = [
       "http://books.google.com/books?id=sazytgAACAAJ&dq=title:The+Hunger+Games&hl=&source=gbs_api"
   },
   {
+    id: 15,
     title: "The Great Gatsby",
     authors: ["F. Scott Fitzgerald"],
     description:
@@ -157,6 +172,7 @@ const bookSeed = [
       "http://books.google.com/books?id=sazytgAACAAJ&dq=title:The+Hunger+Games&hl=&source=gbs_api"
   },
   {
+    id: 16,
     title: "Born a Crime: Stories from a South African Childhood",
     authors: ["Trevor Noah"],
     description:
