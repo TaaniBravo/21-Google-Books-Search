@@ -6,7 +6,12 @@ import SearchCard from "../../components/CustomCards/SearchCard";
 import SearchForm from "../../components/SearchForm";
 import API from "../../utils/API";
 import { useBookContext } from "../../utils/GlobalState";
-import { LOADING, SET_SEARCH_INPUT, UPDATE_SEARCH } from "../../utils/actions";
+import {
+  LOADING,
+  SAVE_BOOK,
+  SET_SEARCH_INPUT,
+  UPDATE_SEARCH
+} from "../../utils/actions";
 
 const Search = () => {
   const [state, dispatch] = useBookContext();
@@ -20,14 +25,20 @@ const Search = () => {
     e.preventDefault();
 
     dispatch({ type: LOADING });
-    API.searchBooks(state.searchInput)
-      .then(({ data }) => {
-        dispatch({ type: LOADING });
-        dispatch({ type: UPDATE_SEARCH, books: data.items });
-      })
-      .then(() => {
-        console.log(state.searchResults);
-      });
+    API.searchBooks(state.searchInput).then(({ data }) => {
+      dispatch({ type: LOADING });
+      dispatch({ type: UPDATE_SEARCH, books: data.items });
+    });
+  };
+
+  const saveBook = async bookData => {
+    console.log(bookData);
+    dispatch({ type: LOADING });
+    await API.saveBook(bookData);
+    dispatch({
+      type: SAVE_BOOK,
+      saveBook: bookData
+    });
   };
 
   return (
@@ -48,7 +59,7 @@ const Search = () => {
           {state.searchResults.length ? (
             state.searchResults.map(book => (
               <ListItem key={book.id}>
-                <SearchCard {...book}></SearchCard>
+                <SearchCard saveBook={saveBook} {...book}></SearchCard>
               </ListItem>
             ))
           ) : (

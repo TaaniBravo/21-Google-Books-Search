@@ -19,14 +19,16 @@ const Saved = () => {
     });
   };
 
-  const removeBook = id => {
+  const removeBook = async id => {
+    dispatch({ type: LOADING });
+    await API.deleteBook(id);
     dispatch({ type: REMOVE_BOOK, _id: id });
   };
 
   useEffect(() => {
     getBooks();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [state.savedBooks]);
 
   return (
     <main>
@@ -36,7 +38,7 @@ const Saved = () => {
         {state.savedBooks?.length ? (
           <List>
             {state.savedBooks.map(book => (
-              <ListItem key={book.id}>
+              <ListItem key={book._id}>
                 <SavedCard removeBook={removeBook} {...book}></SavedCard>
               </ListItem>
             ))}

@@ -29,7 +29,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         savedBooks: [
-          state.books.filter(book => {
+          state.savedBooks.filter(book => {
             return book._id !== action._id;
           })
         ],

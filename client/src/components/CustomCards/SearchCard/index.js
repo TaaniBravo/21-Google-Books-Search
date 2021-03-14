@@ -3,7 +3,6 @@ import { Card, Button } from "react-bootstrap";
 import "./style.scss";
 
 const CustomCard = props => {
-  console.log(props);
   return (
     <div>
       <Card style={{ width: "100%" }}>
@@ -23,7 +22,22 @@ const CustomCard = props => {
               View
             </Button>
           </a>
-          <Button variant="success">Save</Button>
+          <Button
+            variant="success"
+            onClick={() => {
+              const bookData = {
+                authors: props.volumeInfo.authors,
+                title: props.volumeInfo.title,
+                description: props.searchInfo?.textSnippet,
+                image: props.volumeInfo.imageLinks.thumbnail,
+                link: props.volumeInfo.previewLink
+              };
+
+              props.saveBook(bookData);
+            }}
+          >
+            Save
+          </Button>
         </Card.Body>
       </Card>
     </div>

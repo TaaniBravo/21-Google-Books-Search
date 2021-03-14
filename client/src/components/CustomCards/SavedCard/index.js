@@ -19,7 +19,8 @@ const CustomCard = props => {
           <Button
             variant="danger"
             onClick={() => {
-              props.removeBook(props.id);
+              console.log(props._id);
+              props.removeBook(props._id);
             }}
           >
             Delete
