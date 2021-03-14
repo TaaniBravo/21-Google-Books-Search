@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Button } from "react-bootstrap";
+import { Card, Button, Row, Col } from "react-bootstrap";
 import "./style.scss";
 
 const CustomCard = props => {
@@ -11,8 +11,14 @@ const CustomCard = props => {
           <Card.Subtitle className="mb-2 text-muted">
             {props.authors?.join(", ")}
           </Card.Subtitle>
-          <Card.Img variant="top" src="" />
-          <Card.Text>{props.description}</Card.Text>
+          <Row>
+            <Col sm={1}>
+              <Card.Img variant="top" src={props.image} />
+            </Col>
+            <Col sm={11}>
+              <Card.Text>{props.description}</Card.Text>
+            </Col>
+          </Row>
           <Button variant="primary" className="viewBtn">
             View
           </Button>
