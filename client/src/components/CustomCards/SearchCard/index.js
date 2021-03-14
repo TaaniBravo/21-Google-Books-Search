@@ -15,7 +15,7 @@ const CustomCard = props => {
             <Col sm={2}>
               <Card.Img
                 variant="top"
-                src={props.volumeInfo.imageLinks.thumbnail}
+                src={props.volumeInfo.imageLinks?.thumbnail}
               />
             </Col>
             <Col sm={10}>
