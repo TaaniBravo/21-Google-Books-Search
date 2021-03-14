@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar, Nav, Form, FormControl, Button } from "react-bootstrap";
+import { Navbar, Nav } from "react-bootstrap";
 
 const Header = () => {
   return (
@@ -14,14 +14,6 @@ const Header = () => {
             <Nav.Link href="/">Saved</Nav.Link>
             <Nav.Link href="/search">Search</Nav.Link>
           </Nav>
-          <Form inline>
-            <FormControl
-              type="text"
-              placeholder="Quick Search"
-              className="mr-sm-2"
-            />
-            <Button variant="outline-success">Let's look!</Button>
-          </Form>
         </Navbar.Collapse>
       </Navbar>
     </div>
