@@ -12,11 +12,13 @@ const SearchCard = props => {
     <div>
       <Modal show={modalState} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>{props.volumeInfo.title}</Modal.Title>
+          <Modal.Title>Book Saved! 📝</Modal.Title>
         </Modal.Header>
-        <Modal.Body>was saved to your list!</Modal.Body>
+        <Modal.Body>
+          {props.volumeInfo.title} was saved to your list!
+        </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="primary" onClick={handleClose}>
             Close
           </Button>
         </Modal.Footer>
