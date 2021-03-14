@@ -1,10 +1,27 @@
-import React from "react";
-import { Card, Button, Col, Row } from "react-bootstrap";
+import React, { useState } from "react";
+import { Card, Button, Col, Row, Modal } from "react-bootstrap";
 import "./style.scss";
 
-const CustomCard = props => {
+const SearchCard = props => {
+  const [modalState, setModalState] = useState(false);
+
+  const handleClose = () => setModalState(false);
+  const handleShow = () => setModalState(true);
+
   return (
     <div>
+      <Modal show={modalState} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>{props.volumeInfo.title}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>was saved to your list!</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
       <Card style={{ width: "100%" }}>
         <Card.Body>
           <Card.Title>{props.volumeInfo.title}</Card.Title>
@@ -34,7 +51,7 @@ const CustomCard = props => {
             </a>
             <Button
               variant="success"
-              onClick={() => {
+              onClick={function () {
                 const bookData = {
                   authors: props.volumeInfo.authors,
                   title: props.volumeInfo.title,
@@ -43,6 +60,8 @@ const CustomCard = props => {
                   link: props.volumeInfo.previewLink
                 };
                 props.saveBook(bookData);
+
+                handleShow();
               }}
             >
               Save
@@ -54,4 +73,4 @@ const CustomCard = props => {
   );
 };
 
-export default CustomCard;
+export default SearchCard;
